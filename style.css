@@ -4,14 +4,16 @@ body {
   color: white;
   font-size: 12px;
   line-height: 16px;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  overflow: scroll;  
+}
+
+canvas {
+  margin-top: 30px;
 }
 
 section.text {
-  margin-top: 20px !important;
-  margin-bottom: 50px !important;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -43,7 +45,7 @@ section.text {
 
 a {
  color: white;
- text-decoration: none; 
+ text-decoration: underline; 
 }
 
 a:hover {

@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body style="text-align: center">
+    <!-- CANVAS -->
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
+
+    <!-- TEXT -->
     <section class="text">
       <div class="column-left">
         <div class="block">
@@ -42,12 +45,23 @@
       </div>
 
     </section>
+    <!-- HIDE UNITY LOGO -->
+    <script>
+      var canvas = document.getElementById("unity-canvas");
+      canvas.classList.add('hidden');
+      var timer = setTimeout(() => {
+        canvas.classList.remove('hidden');
+        canvas.classList.add('visible');
+      }, 4000);
+    </script>
+    <!-- DIMENSIONS -->
     <script>
       var width = window.innerWidth;
       var height = window.innerHeight;
       document.getElementById("unity-canvas").style.width = width * 0.8 + 'px';
       document.getElementById("unity-canvas").style.height = '800px';
     </script>
+    <!-- UNITY SCRIPTS -->
     <script src="Build/Builds.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {

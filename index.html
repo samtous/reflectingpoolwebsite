@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body style="text-align: center">
+    <!-- LOADING -->
+    <div id="loading-placeholder">loading</div>
+
     <!-- CANVAS -->
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
 
@@ -47,11 +50,16 @@
     </section>
     <!-- HIDE UNITY LOGO -->
     <script>
-      var canvas = document.getElementById("unity-canvas");
-      canvas.classList.add('hidden');
+      var canvasUnity = document.getElementById("unity-canvas");
+      var loading = document.getElementById("loading-placeholder");
+      canvasUnity.classList.add('hidden');
+      loading.classList.add('visible');
       var timer = setTimeout(() => {
-        canvas.classList.remove('hidden');
-        canvas.classList.add('visible');
+        canvasUnity.classList.remove('hidden');
+        canvasUnity.classList.add('visible');
+
+        loading.classList.remove('visible');
+        loading.classList.add('hidden');
       }, 4000);
     </script>
     <!-- DIMENSIONS -->

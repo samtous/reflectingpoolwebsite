@@ -7,8 +7,23 @@ body {
   overflow: scroll;  
 }
 
-canvas {
+#unity-canvas {
   margin-top: 30px;
+}
+
+#loading-placeholder {
+  z-index: 1;
+  position: relative;
+  font-size: 3rem;
+  top: 40vh;
+  font-weight: lighter;
+  animation: loading 2s infinite ease-in-out;
+}
+
+@keyframes loading {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .hidden {

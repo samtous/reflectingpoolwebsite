@@ -8,7 +8,9 @@
   </head>
   <body style="text-align: center">
     <!-- LOADING -->
-    <div id="loading-placeholder">loading</div>
+    <div id="loading-placeholder">Loading</div>
+    <!-- FALLBACK -->
+    <div class='hidden' id="fallback-placeholder">Please use a desktop browser.</div>
 
     <!-- CANVAS -->
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
@@ -50,9 +52,23 @@
     </section>
     <!-- HIDE UNITY LOGO -->
     <script>
+
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var fallback = document.getElementById("fallback-placeholder");
+      fallback.classList.remove('hidden');
+      fallback.classList.add('visible');
+
       var canvasUnity = document.getElementById("unity-canvas");
-      var loading = document.getElementById("loading-placeholder");
       canvasUnity.classList.add('hidden');
+
+      var loading = document.getElementById("loading-placeholder");
+      loading.classList.add('hidden');
+    }
+    else {
+      var canvasUnity = document.getElementById("unity-canvas");
+      canvasUnity.classList.add('hidden');
+
+      var loading = document.getElementById("loading-placeholder");
       loading.classList.add('visible');
       var timer = setTimeout(() => {
         canvasUnity.classList.remove('hidden');
@@ -60,7 +76,10 @@
 
         loading.classList.remove('visible');
         loading.classList.add('hidden');
-      }, 4000);
+      }, 5000);
+    }
+
+
     </script>
     <!-- DIMENSIONS -->
     <script>
@@ -71,26 +90,21 @@
     </script>
     <!-- UNITY SCRIPTS -->
     <script src="Build/Builds.loader.js"></script>
+    <!-- CREATE UNITY INSTANCE -->
     <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+      if (!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+          dataUrl: "Build/Builds.data",
+          frameworkUrl: "Build/Builds.framework.js",
+          codeUrl: "Build/Builds.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "Samtous",
+          productName: "ReflectingPool-Online",
+          productVersion: "2.2",
+          // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+          // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        });
       }
-
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Builds.data",
-        frameworkUrl: "Build/Builds.framework.js",
-        codeUrl: "Build/Builds.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Samtous",
-        productName: "ReflectingPool-Online",
-        productVersion: "2.2",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
     </script>
   </body>
 </html>

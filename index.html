@@ -92,19 +92,17 @@
     <script src="Build/Builds.loader.js"></script>
     <!-- CREATE UNITY INSTANCE -->
     <script>
-      if (!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        createUnityInstance(document.querySelector("#unity-canvas"), {
-          dataUrl: "Build/Builds.data",
-          frameworkUrl: "Build/Builds.framework.js",
-          codeUrl: "Build/Builds.wasm",
-          streamingAssetsUrl: "StreamingAssets",
-          companyName: "Samtous",
-          productName: "ReflectingPool-Online",
-          productVersion: "2.2",
-          // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-          // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        });
-      }
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Builds.data",
+        frameworkUrl: "Build/Builds.framework.js",
+        codeUrl: "Build/Builds.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Samtous",
+        productName: "ReflectingPool-Online",
+        productVersion: "2.2",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
     </script>
   </body>
 </html>

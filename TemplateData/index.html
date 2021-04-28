@@ -13,8 +13,6 @@
 <body style="text-align: center">
     <!-- LOADING -->
     <div id="loading-placeholder">Awaiting</div>
-    <!-- FALLBACK-->
-    <div class='hidden' id="fallback-placeholder">Please use a desktop browser.</div>
 
     <!-- CANVAS -->
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
@@ -55,19 +53,7 @@
 
     </section>
     <!-- HIDE UNITY LOGO -->
-    <script>if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            var fallback = document.getElementById("fallback-placeholder");
-            fallback.classList.remove('hidden');
-            fallback.classList.add('visible');
-
-            var canvasUnity = document.getElementById("unity-canvas");
-            canvasUnity.classList.add('hidden');
-
-            var loading = document.getElementById("loading-placeholder");
-            loading.classList.add('hidden');
-        }
-
-        else {
+    <script>
             var canvasUnity = document.getElementById("unity-canvas");
             canvasUnity.classList.add('hidden');
 

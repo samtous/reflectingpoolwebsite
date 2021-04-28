@@ -4,109 +4,89 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Reflecting Pool</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <meta name="description" content="Reflecting Pool at Spatial Affairs Exhibition,for Beyond Matter by ZKM">
     <meta name="keywords" content="spatial affairs zkm, zkm beyond matter, zkm epfl pavilions, sam ghantous, sam ghantous reflecting pool, reflecting pool online, reflecting pool beyond matter, reflecting pool spatial affairs, reflecting pool zkm, ">
     <meta name="author" content="Sam Ghantous">
 </head>
-  <body style="text-align: center">
+<body style="text-align: center">
     <!-- LOADING -->
     <div id="loading-placeholder">Awaiting</div>
-    <!-- FALLBACK -->
-    <div class='hidden' id="fallback-placeholder">Please use a desktop browser.</div>
 
     <!-- CANVAS -->
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
 
     <!-- TEXT -->
     <section class="text">
-      <div class="column-left">
-        <div class="block">
-          <div>Reflecting Pool - Online</div>
-          <div>2019/2021</div>
-        </div>
+        <div class="column-left">
+            <div class="block">
+                <div>Reflecting Pool - Online</div>
+                <div>2019/2021</div>
+            </div>
 
-        <div class="block">
-          <div>Sam Ghantous</div>
-          <div><a href="https://samtous.wtf/" target="_blank">samtous.wtf</a></div>
-        </div>
+            <div class="block">
+                <div>Sam Ghantous</div>
+                <div><a href="https://samtous.wtf/" target="_blank">samtous.wtf</a></div>
+            </div>
 
-        <div class="block">
-          <div>Project Team:</div>
-          <div>Kalli Retzepi</div>
-          <div>Umar Saeed</div>
-        </div>
+            <div class="block">
+                <div>Project Team:</div>
+                <div>Kalli Retzepi</div>
+                <div>Umar Saeed</div>
+            </div>
 
-        <div class="block">
-          <div>Spatial Affairs</div>
-          <div><a href="https://spatialaffairs.beyondmatter.eu/en">spatialaffairs.beyondmatter.eu</a></div>
-        </div>
+            <div class="block">
+                <div>Spatial Affairs</div>
+                <div><a href="https://spatialaffairs.beyondmatter.eu/en">spatialaffairs.beyondmatter.eu</a></div>
+            </div>
 
-        <div class="block">
-          <div>Spatial Affairs.Worlding is co-organized and co-produced by ZKM | Center for Art and Media Karlsruhe and EPFL Pavilions, as part of the international cooperation project BEYOND MATTER, initiated by the ZKM | Karlsruhe and co-funded by the Creative Europe Program of the European Union.</div>
+            <div class="block">
+                <div>Spatial Affairs.Worlding is co-organized and co-produced by ZKM | Center for Art and Media Karlsruhe and EPFL Pavilions, as part of the international cooperation project BEYOND MATTER, initiated by the ZKM | Karlsruhe and co-funded by the Creative Europe Program of the European Union.</div>
+            </div>
         </div>
-      </div>
-      <div class="column-right">
-        <div class="block">
-         <div>This space is a networked environment in which you might happen upon others in realtime. After 10 minutes this scene will reset.</div>
+        <div class="column-right">
+            <div class="block">
+                <div>This space is a networked environment in which you might happen upon others in realtime. It is not intended for mobile use. </div>
+            </div>
         </div>
-      </div>
 
     </section>
     <!-- HIDE UNITY LOGO -->
     <script>
+            var canvasUnity = document.getElementById("unity-canvas");
+            canvasUnity.classList.add('hidden');
 
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      var fallback = document.getElementById("fallback-placeholder");
-      fallback.classList.remove('hidden');
-      fallback.classList.add('visible');
+            var loading = document.getElementById("loading-placeholder");
+            loading.classList.add('visible');
+            var timer = setTimeout(() => {
+                canvasUnity.classList.remove('hidden');
+                canvasUnity.classList.add('visible');
 
-      var canvasUnity = document.getElementById("unity-canvas");
-      canvasUnity.classList.add('hidden');
-
-      var loading = document.getElementById("loading-placeholder");
-      loading.classList.add('hidden');
-    }
-    else {
-      var canvasUnity = document.getElementById("unity-canvas");
-      canvasUnity.classList.add('hidden');
-
-      var loading = document.getElementById("loading-placeholder");
-      loading.classList.add('visible');
-      var timer = setTimeout(() => {
-        canvasUnity.classList.remove('hidden');
-        canvasUnity.classList.add('visible');
-
-        loading.classList.remove('visible');
-        loading.classList.add('hidden');
-      }, 5000);
-    }
-
-
-    </script>
+                loading.classList.remove('visible');
+                loading.classList.add('hidden');
+            }, 5000);
+        }</script>
     <!-- DIMENSIONS -->
-    <script>
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      document.getElementById("unity-canvas").style.width = width * 0.8 + 'px';
-      document.getElementById("unity-canvas").style.height = '800px';
-    </script>
+    <script>var width = window.innerWidth;
+        var height = window.innerHeight;
+        document.getElementById("unity-canvas").style.width = width * 0.8 + 'px';
+        document.getElementById("unity-canvas").style.height = '800px';</script>
     <!-- UNITY SCRIPTS -->
     <script src="Build/Builds.loader.js"></script>
     <!-- CREATE UNITY INSTANCE -->
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Builds.data",
-        frameworkUrl: "Build/Builds.framework.js",
-        codeUrl: "Build/Builds.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Samtous",
-        productName: "ReflectingPool-Online",
-        productVersion: "2.2",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
-    </script>
-  </body>
+    <script>if (!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            createUnityInstance(document.querySelector("#unity-canvas"), {
+                dataUrl: "Build/Builds.data",
+                frameworkUrl: "Build/Builds.framework.js",
+                codeUrl: "Build/Builds.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Samtous",
+                productName: "ReflectingPool-Online",
+                productVersion: "2.2",
+                // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+                // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+            });
+        }</script>
+</body>
 </html>

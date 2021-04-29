@@ -15,14 +15,14 @@ body {
 }
 
 #loading-placeholder {
-    font-family: Arial, Helvetica, sans-serif;
-    z-index: 1;
-    color: B3B3B3;
-    position: relative;
-    font-size: 3rem;
-    top: 40vh;
-    font-weight: lighter;
-    animation: loading 3s infinite ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+  color: B3B3B3;
+  position: relative;
+  font-size: 3rem;
+  top: 40vh;
+  font-weight: lighter;
+  animation: loading 3s infinite ease-in-out;
 }
 
 #fallback-placeholder {
@@ -88,3 +88,58 @@ a:hover {
   cursor: pointer;
 }
 
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 320px) and (max-width: 1024px) {
+
+  body {
+    padding: 10px;
+  }
+
+  canvas {
+    display: none;
+  }
+
+  #fallback-placeholder {
+    top: 15vh;
+    font-size: 1.5rem;;
+    text-align: left;
+  }
+  
+  section.text {
+    margin-bottom: 30px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .column-left {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-items: space-evenly;
+  }
+
+  .column-right {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+  }
+
+  .block {
+    text-align: left;
+    padding: 10px;
+  }
+
+  .block > * {
+    min-width: 80vw;
+  }
+  
+}
